@@ -31,6 +31,7 @@ class ManageDrugComponent extends Component {
         this.changeDepartmentHandler = this.changeDepartmentHandler.bind(this);
         this.changeSupplierIdHandler = this.changeSupplierIdHandler.bind(this);
 
+        this.demo = this.demo.bind(this);
         this.saveOrUpdateDrug = this.saveOrUpdateDrug.bind(this);
 
     }
@@ -56,6 +57,18 @@ class ManageDrugComponent extends Component {
                 });
             });
         }
+    }
+
+    demo = (d) => {
+        d.preventDefault();
+
+        this.setState({genericName: 'Nepsium'});
+        this.setState({tradeName: 'Lanka Drugs'});
+        this.setState({manuDate: '2020-01-01'});
+        this.setState({expDate: '2030-12-31'});
+        this.setState({unitPrice: '10'});
+        this.setState({quantity: '1000'});
+        this.setState({bufferStock: '200'});
     }
 
     saveOrUpdateDrug = (d) => {
@@ -220,8 +233,9 @@ class ManageDrugComponent extends Component {
                                         </div>
                                     </div>
 
-                                    <button className = "btn btn-primary" onClick = {this.saveOrUpdateDrug}>Save</button>
+                                    <button className = "btn btn-success" onClick = {this.saveOrUpdateDrug}>Save</button>
                                     <button className = "btn btn-danger" onClick = {this.cancel.bind(this)} style = {{marginLeft: "10px"}}>Cancel</button>
+                                    <button className = "btn btn-warning" onClick = {this.demo} style = {{marginLeft: "10px"}}>Demo</button>
                                 </form>
                             </div>
                         </div>

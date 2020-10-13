@@ -13,7 +13,6 @@ class ViewDrugComponent extends Component {
 
         this.backAllDrugs = this.backAllDrugs.bind(this);
         this.editDrug = this.editDrug.bind(this);
-        this.deleteDrug = this.deleteDrug.bind(this);
 
     }
 
@@ -29,13 +28,6 @@ class ViewDrugComponent extends Component {
 
     editDrug(drugId){
         this.props.history.push(`/pharmacy/manage-drug/${drugId}`);
-    }
-
-    deleteDrug(drugId){
-        DrugService.deleteDrug(drugId).then((res) => {
-            this.setState({drug: this.state.drug.filter(drug => drug.drugId !== drugId)});
-        })
-        this.props.history.push('/pharmacy/all-drugs');
     }
 
     getSupplier(){
@@ -62,7 +54,6 @@ class ViewDrugComponent extends Component {
                 <div className = "row">
                     <button className = "btn btn-primary btn-green-dark" onClick = {this.backAllDrugs}>Back All Drugs</button>
                     <button onClick = {() => this.editDrug(this.state.drug.drugId)} style={{marginLeft: "10px"}} className = "btn btn-primary btn-green">Update Drug</button>
-                    <button onClick = {() => this.deleteDrug(this.state.drug.drugId)} style={{marginLeft: "10px"}} className = "btn btn-danger">Delete</button>
                 </div>
                 <br/>
                 <div class="card-deck mb-3 text-center">

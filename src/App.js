@@ -42,6 +42,7 @@ import CreateNotificationComponent from './Components/Dashboard/Channeling/Creat
 import UpdateNotificationComponent from './Components/Dashboard/Channeling/UpdateNotificationComponent';
 import ViewNotificationComponent from './Components/Dashboard/Channeling/ViewNotificationComponent';
 import ManagePaymentComponent from './Components/Dashboard/Pharmacy/ManagePaymentComponent';
+import AllPaymentsComponent from './Components/Dashboard/Pharmacy/AllPaymentsComponent';
 
 const AppRoute =  ({component:Component, layout:Layout, ...rest}) => (
   <Route {...rest} render = {props =>(
@@ -59,6 +60,7 @@ function App() {
       <AppRoute path = "/pharmacy/manage-drug/:drugId" layout = {DashboardLayout} component = {ManageDrugComponent} />
       <AppRoute path = "/pharmacy/view-drug/:drugId" layout = {DashboardLayout} component = {ViewDrugComponent} />
       <AppRoute path = "/pharmacy/add-payment" layout = {OtherLayout} component = {ManagePaymentComponent} />
+      <AppRoute path = "/pharmacy/all-payments" layout = {DashboardLayout} component = {AllPaymentsComponent} />
 
       <AppRoute path = "/finance/all-utility" layout = {DashboardLayout} component = {ListUtilityComponent} />
       <AppRoute path = "/finance/add-utility" layout = {DashboardLayout} component = {AddUtilityComponent} />

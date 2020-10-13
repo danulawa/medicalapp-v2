@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import DrugService from '../../../Services/DrugService';
 
+function searchingFor(term){
+    return function(x){
+        return x.genericName.toLowerCase().includes(term.toLowerCase()) || !term;
+    }
+}
+
 class AllDrugsComponent extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            drug: []
+            drug: [],
+            term:''
         }
 
         this.newDrug = this.newDrug.bind(this);
         this.editDrug = this.editDrug.bind(this);
         this.deleteDrug = this.deleteDrug.bind(this);
         this.viewDrug = this.viewDrug.bind(this);
+        this.searchHandler = this.searchHandler.bind(this);
 
     }
 
@@ -40,14 +48,19 @@ class AllDrugsComponent extends Component {
         this.props.history.push(`/pharmacy/view-drug/${drugId}`);
     }
 
+    searchHandler(event){
+        this.setState({term: event.target.value});
+    }
+
     render() {
+        const {term, drug} = this.state;
         return (
             <div>
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Pharmacy - All Drugs</h1> <br/>
                 </div>
                 <div>
-                    <input class="form-control w-25" type="text" placeholder="Search Your Drug Here" aria-label="Search"/>
+                    <input class="form-control w-25" type="text" onChange = {this.searchHandler} placeholder="Search Your Generic Name Here" aria-label="Search"/>
                 </div>
                 <br/>
                 <div className = "row">
@@ -67,7 +80,7 @@ class AllDrugsComponent extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.state.drug.map(
+                                this.state.drug.filter(searchingFor(term)).map(
                                     drug =>
                                     <tr key = {drug.drugId}>
                                         <td> {drug.tradeName} </td>
