@@ -1,0 +1,63 @@
+
+a:link {
+    text-decoration: none;
+    text-underline-position: none;
+    font-style:normal;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    
+    
+}
+
+
+root { 
+    display: block;
+}
+#backgroud{
+    background-color:#2EAE79;
+    height: 100%;  
+    width: 100%;
+}
+#canvas{
+    background-color:whitesmoke;
+    height: 100%;
+    width: 96%;
+    margin-left: 5%;
+        
+}
+#head{
+    height:5%;
+    width: 100%;
+      
+}
+#data{
+    height:75%;
+    width: 100%;
+}
+#foot{
+    height:5%;
+    width: 100%;
+}
+#part1{
+    width: 30%;
+    height: 100%; 
+    float: left;
+}
+#part2{
+    width: 34%;
+    height: 100%;
+    float: left;
+}
+#part3{
+    width: 100%;
+    height: 100%;
+    float:right;
+}
+#part4{
+    width: 50%;
+    height:100%;
+    float:left;
+    margin-left: 20%;
+    font-size: 20px;
+}
