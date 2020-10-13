@@ -118,15 +118,15 @@ function App() {
       <AppRoute path = "/intuser/update-employee/:Id" layout = {DashboardLayout} component = {UpdateEmployeeComponent} />
       <AppRoute path = "/intuser/view-employee/:Id" layout = {DashboardLayout} component = {ViewEmployeeComponent} />
 
-      <AppRoute path = "/doctors" component = {ListDoctorComponent}></AppRoute>
-      <AppRoute path = "/add-doctor/:id" component = {CreateDoctorComponent}></AppRoute>
-      <AppRoute path = "/view-doctor/:id" component = {ViewDoctorComponent}></AppRoute>
-      <AppRoute path = "/update-doctor/:id" component = {UpdateDoctorComponent}></AppRoute>
+      <AppRoute path = "/doctors" layout = {DashboardLayout} component = {ListDoctorComponent}></AppRoute>
+      <AppRoute path = "/add-doctor/:id" layout = {DashboardLayout} component = {CreateDoctorComponent}></AppRoute>
+      <AppRoute path = "/view-doctor/:id" layout = {DashboardLayout} component = {ViewDoctorComponent}></AppRoute>
+      <AppRoute path = "/update-doctor/:id" layout = {DashboardLayout} component = {UpdateDoctorComponent}></AppRoute>
 
-      <AppRoute path = "/employees" component = {ListEmployeeComponent}></AppRoute>
-      <AppRoute path = "/add-employee/:id" component = {CreateEmployeeComponent}></AppRoute>
-      <AppRoute path = "/view-employee/:id" component = {ViewEmployeeComponent}></AppRoute>
-      <AppRoute path = "/update-employee/:id" component = {UpdateEmployeeComponent}></AppRoute>
+      <AppRoute path = "/employees" layout = {DashboardLayout} component = {ListEmployeeComponent}></AppRoute>
+      <AppRoute path = "/add-employee/:id" layout = {DashboardLayout} component = {CreateEmployeeComponent}></AppRoute>
+      <AppRoute path = "/view-employee/:id" layout = {DashboardLayout} component = {ViewEmployeeComponent}></AppRoute>
+      <AppRoute path = "/update-employee/:id" layout = {DashboardLayout} component = {UpdateEmployeeComponent}></AppRoute>
 
     </Router>
   );
