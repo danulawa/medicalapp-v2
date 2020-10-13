@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService';
+import EmployeeService from '../../../Services/EmployeeService';
 import * as moment from 'moment';
 
 class CreateEmployeeComponent extends Component {
