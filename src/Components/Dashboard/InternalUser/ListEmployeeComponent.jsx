@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EmployeeService from '../../../Services/EmployeeService';
+import EmployeeService from '../services/EmployeeService';
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
@@ -20,10 +20,10 @@ class ListEmployeeComponent extends Component {
         });
     }
     viewEmployee(id){
-        this.props.history.push(`/intuser/view-employee/${id}`);
+        this.props.history.push(`/view-employee/${id}`);
     }
     editEmployee(id){
-        this.props.history.push(`/intuser/add-employee/${id}`);
+        this.props.history.push(`/add-employee/${id}`);
     }
     
     
@@ -35,7 +35,7 @@ class ListEmployeeComponent extends Component {
     }
 
     addEmployee(){
-        this.props.history.push('/intuser/add-employee/_add');
+        this.props.history.push('/add-employee/_add');
     }
 
     render() {

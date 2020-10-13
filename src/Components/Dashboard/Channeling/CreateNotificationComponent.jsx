@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import * as moment from 'moment';
 import NotificationServices from '../../../Services/NotificationServices';
-
 class CreateNotificationComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
 
-            NotificationName:'',
-            NotificationBody:'',
-            Date:''
+            notify_name:'',
+            notify_body:'',
+            notify_date:''
         }
 
         this.changeNotificationNameHandler = this.changeNotificationNameHandler.bind(this);
@@ -18,27 +18,47 @@ class CreateNotificationComponent extends Component {
         this.saveNotification = this.saveNotification.bind(this);
     }
 
+
     saveNotification = (e) => {
         e.preventDefault();
-        let Notification = {NotificationName: this.state.NotificationName, NotificationBody: this.state.NotificationBody, Date: this.state.Date};
+        let Notification = {notify_name: this.state.notify_name,
+            notify_body: this.state.notify_body,
+            notify_date: this.state.notify_date};
+
         console.log('Notification=> ' + JSON.stringify(Notification));
+
+        if(this.state.notify_name === ''){
+            alert("Notify Name must be included!")
+        }
+        else if(this.state.notify_body === ''){
+            alert("Notification Body or Message must not be Empty!!!")
+        }
+        else if(this.state.notify_date === ''){
+            alert("Please insert the date!!!")
+        }
+        else{
+            NotificationServices.createNotification(Notification).then(res => {
+                this.props.history.push('/notifications');
+            });
+        }
+        
     }
     
 
     changeNotificationNameHandler= (event) => {
-        this.setState({NotificationName: event.target.value});
+        this.setState({notify_name: event.target.value});
     }
 
     changeNotificationBodyHandler= (event) => {
-        this.setState({NotificationBody: event.target.value});
+        this.setState({notify_body: event.target.value});
     }
 
     changeDateHandler= (event) => {
-        this.setState({Date: event.target.value});
+        this.setState({notify_date: event.target.value});
     }
 
     cancel() {
-        this.props.history.push('/channeling/notifications');
+        this.props.history.push('/notifications');
     }
 
     render() {
@@ -55,18 +75,18 @@ class CreateNotificationComponent extends Component {
                                     <form>
                                         <div className = "form-group">
                                             <label> Notification Name: </label>
-                                            <input placeholder="Notification Name" name="NotificationName" className="form-control" 
-                                            value={this.state.NotificationName} onChange={this.changeNotificationNameHandler}/>
+                                            <input placeholder="Notification Name" name="notify_name" className="form-control" 
+                                            value={this.state.notify_name} onChange={this.changeNotificationNameHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Notification Body: </label>
-                                            <input placeholder="Notification Body" name="NotificationBody" className="form-control" 
-                                            value={this.state.NotificationBody} onChange={this.changeNotificationBodyHandler}/>
+                                            <input placeholder="Notification Body" name="notify_body" className="form-control" 
+                                            value={this.state.notify_body} onChange={this.changeNotificationBodyHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Date: </label>
-                                            <input placeholder="Year/Month/Date" name="Date" className="form-control" 
-                                            value={this.state.Date} onChange={this.changeDateHandler}/>
+                                            <input className="inputC" type="Date" placeholder="Year/Month/Date" name="notify_date" className="form-control" 
+                                            value={this.state.notify_date} onChange={this.changeDateHandler} max = {moment().format("YYYY-MM-DD")}/>
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.saveNotification}>Create</button>

@@ -46,9 +46,8 @@ class SideBarComponent extends Component {
                     <li class = "nav-item dropdown">
    				        <a href="#channelingDrop" data-toggle="collapse" aria-expanded="false" class = "nav-link">Channeling Services</a>
    				        <ul class="collapse list-unstyled" id="channelingDrop">
-   					        <li> <a class = "dropdown-itemm" href="#">New Booking</a> </li>
-                            <li> <a class = "dropdown-itemm" href="#">All Bookings</a> </li>
-                            <li> <a class = "dropdown-itemm" href="#">Billing</a> </li>
+   					        <li> <a class = "dropdown-itemm" href="/time">Time Table</a> </li>
+                            <li> <a class = "dropdown-itemm" href="/notifications">Notifications</a> </li>
    				        </ul> 
    			        </li>
                     <li class = "nav-item dropdown">
@@ -79,10 +78,8 @@ class SideBarComponent extends Component {
                     <li class = "nav-item dropdown">
    				        <a href="#intDrop" data-toggle="collapse" aria-expanded="false" class = "nav-link">Internal Users</a>
    				        <ul class="collapse list-unstyled" id="intDrop">
-                            <li> <a class = "dropdown-itemm" href="/intuser/add-employee">New Employee</a> </li>
-                            <li> <a class = "dropdown-itemm" href="/intuser/employees">All Employees</a> </li>
-   					        <li> <a class = "dropdown-itemm" href="#">New Doctor</a> </li>
-                            <li> <a class = "dropdown-itemm" href="#">All Doctors</a> </li>
+                            <li> <a class = "dropdown-itemm" href="/doctors">All Doctors</a> </li>
+                            <li> <a class = "dropdown-itemm" href="/employees">All Employees</a> </li>
    				        </ul>
    			        </li>
                 </ul>

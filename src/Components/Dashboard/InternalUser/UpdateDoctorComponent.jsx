@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import EmployeeService from '../services/EmployeeService';
+import DoctorService from '../services/DoctorService';
 
-class UpdateEmployeeComponent extends Component {
+class UpdateDoctorComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -9,9 +9,8 @@ class UpdateEmployeeComponent extends Component {
             id: this.props.match.params.id,
             fullName: '',
             nic: '',
-            dateofbirth: '',
+            specialization: '',
             department: '',
-            desination: '',
             contactnumber: '',
             address: '',
             email: '',
@@ -19,47 +18,37 @@ class UpdateEmployeeComponent extends Component {
         }
         this.changeFullNameHandler = this.changeFullNameHandler.bind(this);
         this.changeNICHandler = this.changeNICHandler.bind(this);
-        this.changeDateofBirthHandler = this.changeDateofBirthHandler.bind(this);
+        this.changeSpecializationHandler = this.changeSpecializationHandler.bind(this);
         this.changeDepartmentHandler = this.changeDepartmentHandler.bind(this);
-        this.changeDesinationHandler = this.changeDesinationHandler.bind(this);
         this.changeContactNumberHandler = this.changeContactNumberHandler.bind(this);
         this.changeAddressHandler = this.changeAddressHandler.bind(this);
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.changeRegistrationDateHandler = this.changeRegistrationDateHandler.bind(this);
-        this.updateEmployee = this.updateEmployee.bind(this);
+        this.updateDoctor = this.updateDoctor.bind(this);
     }
 
     componentDidMount(){
-        EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
-            let employee = res.data;
-            this.setState({fullName: employee.fullName,
-                    nic: employee.nic,
-                    dateofbirth : employee.dateofbirth,
-                    department : employee.department,
-                    desination : employee.desination,
-                    contactnumber : employee.contactnumber,
-                    address : employee.address,
-                    email : employee.email,
-                    registrationdate : employee.registrationdate,
+        DoctorService.getDoctorById(this.state.id).then( (res) =>{
+            let doctor = res.data;
+            this.setState({fullName: doctor.fullName,
+                    nic: doctor.nic,
+                    specialization : doctor.specialization,
+                    department : doctor.department,
+                    contactnumber : doctor.contactnumber,
+                    address : doctor.address,
+                    email : doctor.email,
+                    registrationdate : doctor.registrationdate,
             });
         });
     }
 
-    updateEmployee = (e) => {
+    updateDoctor = (e) => {
         e.preventDefault();
-        let employee = {fullName: this.state.fullName,
-             nic: this.state.nic,
-            dateofbirth: this.state.dateofbirth,
-            department: this.state.department,
-            desination: this.state.desination,
-            contactnumber: this.state.contactnumber,
-            address: this.state.address,
-            email: this.state.email,
-            registrationdate: this.state.registrationdate};
-        console.log('employee => ' + JSON.stringify(employee));
+        let doctor = {fullName: this.state.fullName, nic: this.state.nic, specialization: this.state.specialization,department: this.state.department,contactnumber: this.state.contactnumber,address: this.state.address,email: this.state.email,registrationdate: this.state.registrationdate};
+        console.log('doctor => ' + JSON.stringify(doctor));
         console.log('id => ' + JSON.stringify(this.state.id));
-        EmployeeService.updateEmployee(employee, this.state.id).then( res => {
-            this.props.history.push('/employees');
+        DoctorService.updateDoctor(doctor, this.state.id).then( res => {
+            this.props.history.push('/doctors');
         });
     }
     
@@ -71,17 +60,14 @@ class UpdateEmployeeComponent extends Component {
         this.setState({nic: event.target.value});
     }
 
-    changeDateofBirthHandler= (event) => {
-        this.setState({dateofbirth: event.target.value});
+    changeSpecializationHandler= (event) => {
+        this.setState({specialization: event.target.value});
     }
 
     changeDepartmentHandler= (event) => {
         this.setState({department: event.target.value});
     }
 
-    changeDesinationHandler= (event) => {
-        this.setState({desination: event.target.value});
-    }
 
     changeContactNumberHandler= (event) => {
         this.setState({contactnumber: event.target.value});
@@ -99,7 +85,7 @@ class UpdateEmployeeComponent extends Component {
         this.setState({registrationdate: event.target.value});
     }
     cancel(){
-        this.props.history.push('/employees');
+        this.props.history.push('/doctors');
     }
 
     render() {
@@ -109,7 +95,7 @@ class UpdateEmployeeComponent extends Component {
                    <div className = "container">
                         <div className = "row">
                             <div className = "card col-md-6 offset-md-3 offset-md-3">
-                                <h3 className="text-center">Update Employee</h3>
+                                <h3 className="text-center">Update Doctor</h3>
                                 <div className = "card-body">
                                     <form>
                                     <div className = "form-group">
@@ -124,9 +110,9 @@ class UpdateEmployeeComponent extends Component {
                                                 value={this.state.nic} onChange={this.changeNICHandler}/>
                                         </div>
                                         <div className = "form-group">
-                                            <label> DateofBirth: </label>
-                                            <input placeholder=" DateofBirth" name="dateofbirth" className="form-control" 
-                                                value={this.state.dateofbirth} onChange={this.changeDateofBirthHandler}/>
+                                            <label> Specialization: </label>
+                                            <input placeholder=" Specialization" name="specialization" className="form-control" 
+                                                value={this.state.specialization} onChange={this.changeSpecializationHandler}/>
                                         </div>
 
                                         <div className = "form-group">
@@ -135,11 +121,6 @@ class UpdateEmployeeComponent extends Component {
                                                 value={this.state.department} onChange={this.changeDepartmentHandler}/>
                                         </div>
 
-                                        <div className = "form-group">
-                                            <label> Designation: </label>
-                                            <input placeholder="Desination" name="desination" className="form-control" 
-                                                value={this.state.desination} onChange={this.changeDesinationHandler}/>
-                                        </div>
 
                                         <div className = "form-group">
                                             <label> Contact Number: </label>
@@ -165,7 +146,7 @@ class UpdateEmployeeComponent extends Component {
                                                 value={this.state.registrationdate} onChange={this.changeRegistrationDateHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.updateEmployee}>Save</button>
+                                        <button className="btn btn-success" onClick={this.updateDoctor}>Save</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </form>
                                 </div>
@@ -178,4 +159,4 @@ class UpdateEmployeeComponent extends Component {
     }
 }
 
-export default UpdateEmployeeComponent
+export default UpdateDoctorComponent

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EmployeeService from '../../../Services/EmployeeService'
+import EmployeeService from '../services/EmployeeService'
 
 class ViewEmployeeComponent extends Component {
     constructor(props) {
@@ -7,7 +7,7 @@ class ViewEmployeeComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            employee: {}
+            employee: []
         }
     }
 
@@ -26,7 +26,7 @@ class ViewEmployeeComponent extends Component {
                     <div className = "card-body">
                         <div className = "row">
                             <label> Employee Full Name: </label>
-                            <div> { this.state.employee.Fullname }</div>
+                            <div> { this.state.employee.fullName }</div>
                         </div>
                         <div className = "row">
                             <label> Employee NIC: </label>

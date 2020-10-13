@@ -30,19 +30,37 @@ import ListEquipmentComponent from './Components/Dashboard/OPD/ListEquipmentComp
 import ListPatientComponent from './Components/Dashboard/ExternalUser/ListPatientComponent';
 import CreatePatientComponent from './Components/Dashboard/ExternalUser/CreatePatientComponent';
 import UpdatePatientComponent from './Components/Dashboard/ExternalUser/UpdatePatientComponent';
-import ListEmployeeComponent from './Components/Dashboard/InternalUser/ListEmployeeComponent';
-import CreateEmployeeComponent from './Components/Dashboard/InternalUser/CreateEmployeeComponent';
-import UpdateEmployeeComponent from './Components/Dashboard/InternalUser/UpdateEmployeeComponent';
-import ViewEmployeeComponent from './Components/Dashboard/InternalUser/ViewEmployeeComponent';
+
 import createLabComponent from './Components/Dashboard/Laboratory/createLabComponent';
 import LabReportComponent from './Components/Dashboard/Laboratory/LabReportComponent';
 import UpdateLabComponent from './Components/Dashboard/Laboratory/UpdateLabComponent';
+import ManagePaymentComponent from './Components/Dashboard/Pharmacy/ManagePaymentComponent';
+import AllPaymentsComponent from './Components/Dashboard/Pharmacy/AllPaymentsComponent';
+
+import TimetableComponent from './Components/Dashboard/Channeling/TimetableComponent';
+import AdminControlTimeTables from './Components/Dashboard/Channeling/AdminControlTimeTables';
+import ShowTimetableComponent from './Components/Dashboard/Channeling/ShowTimetableComponent';
+import ShowDoctorTimetableComponent from './Components/Dashboard/Channeling/ShowDoctorTimetableComponent';
+import UserShowTimeTables from './Components/Dashboard/Channeling/UserShowTimeTables';
+import DoctorShowTimeTables from './Components/Dashboard/Channeling/DoctorShowTimeTables';
+import UpdateTimetableComponent from './Components/Dashboard/Channeling/UpdateTimetableComponent';
+import UpdateDoctorTimetableComponents from './Components/Dashboard/Channeling/UpdateDoctorTimetableComponents';
+import UserListNotificationComponent from './Components/Dashboard/Channeling/UserListNotificationComponent';
+
 import ListNotificationComponent from './Components/Dashboard/Channeling/ListNotificationComponent';
 import CreateNotificationComponent from './Components/Dashboard/Channeling/CreateNotificationComponent';
 import UpdateNotificationComponent from './Components/Dashboard/Channeling/UpdateNotificationComponent';
 import ViewNotificationComponent from './Components/Dashboard/Channeling/ViewNotificationComponent';
-import ManagePaymentComponent from './Components/Dashboard/Pharmacy/ManagePaymentComponent';
-import AllPaymentsComponent from './Components/Dashboard/Pharmacy/AllPaymentsComponent';
+
+import ListEmployeeComponent from './Components/Dashboard/InternalUser/ListEmployeeComponent';
+import CreateEmployeeComponent from './Components/Dashboard/InternalUser/CreateEmployeeComponent';
+import UpdateEmployeeComponent from './Components/Dashboard/InternalUser/UpdateEmployeeComponent';
+import ViewEmployeeComponent from './Components/Dashboard/InternalUser/ViewEmployeeComponent';
+
+import ListDoctorComponent from './Components/Dashboard/InternalUser/ListDoctorComponent';
+import CreateDoctorComponent from './Components/Dashboard/InternalUser/CreateDoctorComponent';
+import ViewDoctorComponent from './Components/Dashboard/InternalUser/ViewDoctorComponent';
+import UpdateDoctorComponent from './Components/Dashboard/InternalUser/UpdateDoctorComponent';
 
 const AppRoute =  ({component:Component, layout:Layout, ...rest}) => (
   <Route {...rest} render = {props =>(
@@ -76,20 +94,40 @@ function App() {
       <AppRoute path = "/extuser/add-patient" layout = {DashboardLayout} component = {CreatePatientComponent} />
       <AppRoute path = "/extuser/update-patient/:Id" layout = {DashboardLayout} component = {UpdatePatientComponent} />
 
-      <AppRoute path = "/intuser/employees" layout = {DashboardLayout} component = {ListEmployeeComponent} />
-      <AppRoute path = "/intuser/add-employee" layout = {DashboardLayout} component = {CreateEmployeeComponent} />
-      <AppRoute path = "/intuser/update-employee/:Id" layout = {DashboardLayout} component = {UpdateEmployeeComponent} />
-      <AppRoute path = "/intuser/view-employee/:Id" layout = {DashboardLayout} component = {ViewEmployeeComponent} />
-
       <AppRoute path = "/lab/labDetails" layout = {DashboardLayout} component = {createLabComponent} />
       <AppRoute path = "/lab/add-labDetails" layout = {DashboardLayout} component = {createLabComponent} />
       <AppRoute path = "/lab/lab-report" layout = {DashboardLayout} component = {LabReportComponent} />
       <AppRoute path = "/lab/update-lab/:labId" layout = {DashboardLayout} component = {UpdateLabComponent} />
 
-      <AppRoute path = "/channeling/notifications" layout = {DashboardLayout} component = {ListNotificationComponent} />
-      <AppRoute path = "/channeling/add-notification" layout = {DashboardLayout} component = {CreateNotificationComponent} />
-      <AppRoute path = "/channeling/update-notification/:id" layout = {DashboardLayout} component = {UpdateNotificationComponent} />
-      <AppRoute path = "/channeling/view-notification/:id" layout = {DashboardLayout} component = {ViewNotificationComponent} />
+      <AppRoute path = "/time" layout = {DashboardLayout} component = {TimetableComponent}></AppRoute>
+      <AppRoute path = "/admin" layout = {DashboardLayout} component = {AdminControlTimeTables}></AppRoute>
+      <AppRoute path = "/timetables" layout = {DashboardLayout} component = {ShowTimetableComponent}></AppRoute>
+      <AppRoute path = "/Doctimetables" layout = {DashboardLayout} component = {ShowDoctorTimetableComponent}></AppRoute>
+      <AppRoute path = "/usertimetables" layout = {DashboardLayout} component = {UserShowTimeTables}></AppRoute>
+      <AppRoute path = "/doctortimetables" layout = {DashboardLayout} component = {DoctorShowTimeTables}></AppRoute>
+      <AppRoute path = "/edit-timetables/:shiftID" layout = {DashboardLayout} component = {UpdateTimetableComponent}></AppRoute>
+      <AppRoute path = "/edit-Doctimetables/:shiftID" layout = {DashboardLayout} component = {UpdateDoctorTimetableComponents}></AppRoute>
+      <AppRoute path = "/user-notifications" layout = {DashboardLayout} component = {UserListNotificationComponent}></AppRoute>
+      <AppRoute path = "/notifications" layout = {DashboardLayout} component = {ListNotificationComponent}></AppRoute>
+      <AppRoute path = "/add-notification" layout = {DashboardLayout} component = {CreateNotificationComponent}></AppRoute>
+      <AppRoute path = "/view-notification/:id" layout = {DashboardLayout} component = {ViewNotificationComponent}></AppRoute>
+      <AppRoute path = "/update-notification/:id" layout = {DashboardLayout} component = {UpdateNotificationComponent}></AppRoute>
+
+      <AppRoute path = "/intuser/employees" layout = {DashboardLayout} component = {ListEmployeeComponent} />
+      <AppRoute path = "/intuser/add-employee" layout = {DashboardLayout} component = {CreateEmployeeComponent} />
+      <AppRoute path = "/intuser/update-employee/:Id" layout = {DashboardLayout} component = {UpdateEmployeeComponent} />
+      <AppRoute path = "/intuser/view-employee/:Id" layout = {DashboardLayout} component = {ViewEmployeeComponent} />
+
+      <AppRoute path = "/doctors" component = {ListDoctorComponent}></AppRoute>
+      <AppRoute path = "/add-doctor/:id" component = {CreateDoctorComponent}></AppRoute>
+      <AppRoute path = "/view-doctor/:id" component = {ViewDoctorComponent}></AppRoute>
+      <AppRoute path = "/update-doctor/:id" component = {UpdateDoctorComponent}></AppRoute>
+
+      <AppRoute path = "/employees" component = {ListEmployeeComponent}></AppRoute>
+      <AppRoute path = "/add-employee/:id" component = {CreateEmployeeComponent}></AppRoute>
+      <AppRoute path = "/view-employee/:id" component = {ViewEmployeeComponent}></AppRoute>
+      <AppRoute path = "/update-employee/:id" component = {UpdateEmployeeComponent}></AppRoute>
+
     </Router>
   );
 }

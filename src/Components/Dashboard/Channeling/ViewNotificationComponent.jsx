@@ -26,15 +26,17 @@ class ViewNotificationComponent extends Component {
                     <h3 className = "text-center"> View Notification Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label> Notification Name: </label>
+                            <h5><label> Notification Name : </label></h5>
                             <div> { this.state.notification.notify_name }</div>
                         </div>
+                        <br></br>
                         <div className = "row">
-                            <label> Notification Body: </label>
+                            <h5><label> Notification Body : </label></h5>
                             <div> { this.state.notification.notify_body }</div>
                         </div>
+                        <br></br>
                         <div className = "row">
-                            <label> Notification Date: </label>
+                            <h5><label> Notification Date : </label></h5>
                             <div> { this.state.notification.notify_date }</div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ class ListNotificationComponent extends Component {
     }
 
     viewNotification(id){
-        this.props.history.push(`/channeling/view-notification/${id}`);
+        this.props.history.push(`/view-notification/${id}`);
     }
 
     deleteNotification(id){
@@ -24,7 +24,7 @@ class ListNotificationComponent extends Component {
     }
 
     editNotification(id){
-        this.props.history.push(`/channeling/update-notification/${id}`);
+        this.props.history.push(`/update-notification/${id}`);
     }
 
     componentDidMount(){
@@ -34,7 +34,7 @@ class ListNotificationComponent extends Component {
     }
 
     addNotification(){
-        this.props.history.push('/channeling/add-notification');
+        this.props.history.push('/add-notification');
     }
 
     render() {
